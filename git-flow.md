@@ -1,4 +1,4 @@
-## 여기서 잠깐, Git flow란?
+# Git flow의 개념, 그리고 문제점
 
 우리는 코드를 관리하기 위해서 Git을 사용합니다.
 
@@ -102,3 +102,55 @@ Git-Flow를 설명할 때, 그냥 이 사진이 보통 쓰입니다. 그만큼 �
 
 결국 브랜치 전략은 협업 전략입니다. 그렇기에 아무리 혼자 열심히 만들어도 상대방이 써주질 않으면 그만입니다. 같이 상의해보세요. 그리고, 전략을 수정해나가세요.
 
+
+
+# Git flow의 문제점
+
+## 1. develop, main 브랜치 간의 동기화 문제
+
+Git-flow에서 `develop`, ` main`(구 master) 브랜치를 제외한 모든 브랜치는 **임시적인 브랜치**로, 자신의 역할을 다하면 삭제되게 되어 있습니다. Git-flow의 그림을 보면 알겠지만 어느 정도 개발을 마친 후, `develop → main` 병합 과정이 이루어질 때, develop 브랜치가 직접 main 브랜치로 머지되는 것이 아닌 한단계를 거쳐 `develop -> release-* -> main` 형식으로 가게 되죠.
+
+프로젝트의 규모가 커지고 복잡성이 증가해진다면, 저렇게 하는게 좋겠지만 이걸로 인한 가장 큰 문제는 **설령 develop과 main의 코드 상태가 완전히 똑같은 상태일지라도, 이 둘은 Commit 기록 자체가 다르기 때문에 서로 다른 코드 상태라고 인식**된다는 점이다.
+
+대표적으로 예를 들면 **두 브랜치가 완전히 똑같은 상태임에도 develop → main으로 직접 PR을 날리면 아무런 변화가 없어도 PR이 가능해지고 Merge가 가능하다는게 문제**입니다. 심지어 이것마저도 일반 Merge Commit이 아닌 Squash Commit을 날리면 새로운 커밋으로 취급이 되어 동기화가 안되죠.
+
+![image](https://user-images.githubusercontent.com/29897277/182574384-fe665118-f8ec-4ec7-9793-134e97a01ece.png)
+
+**이러한 텅 빈 Merge Commit을 날려야만 비로소 develop과 main Branch의 상태가 똑같다고 인식**이 되게 됩니다.
+
+즉, 결론적으로 Repo의 기준이 되는 **`develop`**과 **`main`** 브랜치는 서로 동기화가 가능하도록 하자는 것이다. **그렇지 않으면 우리는 `develop`과 `main` 브랜치가 서로 같은 코드 상태라는 걸 우리의 머리 속에 기억하고 있어야 합니다. 코드가 똑같은 것과 전혀 상관없이 말이죠**.
+
+## 2. 대체 무슨 Merge를 해야 돼?
+
+`Github`에서 `pull request`시 선택할 수 있는 `merge`방식이 3가지가 있다.
+
+- **Merge Commit (일반 머지)**
+- **Squach Merge (스쿼시)**
+- **Rebase Merge (리베이스)**
+
+각각에 대한 세부 설명은 [여기](https://velog.io/@viiviii/Git-pull-request-시-merge-종류)를 참고.
+
+![image](https://user-images.githubusercontent.com/29897277/182575205-07f95bb3-db87-4975-bfeb-c08a2ab39153.png)
+
+Git flow에서 제공하는 그림의 특징상 Rebase Merge는 아닐 것이라고 추측은 해볼 수 있겠지만, 그렇다고 Git flow에서 정확하게 무슨 형태의 머지를 하라는 건지 정의가 되어있지는 않습니다. 제가 지적하는 것은 이러한 모호함입니다.
+
+이는 기존의 Git의 기능 만으로는 기본적으로 Squash and Merge라는 기능이 존재하지 않기 때문에 Git flow에서 이러한 것들을 언급하지 않는 것이라 추측해볼 수 있습니다. 하지만 저희는 다양한 기능을 가진 Github에서 작업하는 만큼 그에 맞게 더 다양한 고민을 해보며 효율적으로 작업을 수행해볼 수 있을 것 입니다.
+
+## 3. develop 브랜치를 기반으로 설계해야 한다
+
+개발 프로젝트를 진행할 때에 있어, develop을 default bransh로 잡고 설계해야 한다고 생각했습니다. 그 이유는,
+
+- develop은 stable하지 않을 뿐, 높은 확률로 해당 프로젝트의 최신 코드 상태를 유지한다.
+- 개발자가 가장 많이 상호작용하는 브랜치이며, PR을 받든 PR을 날리든 대부분의 작업은 develop과 연관되어 있다.
+
+> 즉, 이게 아니라 이렇게 하자는 것 입니다.
+
+![image](https://user-images.githubusercontent.com/29897277/182576344-8abc69e8-9c56-4eb6-a2d1-6d178fc7686f.png)
+
+## 4. 2중 Merge, 그리고 Release 브랜치
+
+Git flow의 Merge 과정 중에는 굉장히 까다로운 브랜치가 2개 존재합니다. (`release`, `hotfix`)
+
+![image](https://user-images.githubusercontent.com/29897277/182577679-9005f8a5-6238-47fd-a50b-838cd8538644.png)
+
+각기 다른 브랜치에 2중으로 merge를 하는 작업은 굉장히 까다로울 수 있습니다. 두 타겟 브랜치의 코드 형상이 이미 달라져버릴 수 있기 때문이죠. 그럼에도 이걸 해야하는 이유는 **영구 브랜치인 `develop`, `main`에 일관적으로 수정사항을 반영해주기 위해서입니다. 현재 develop과 main의 코드 상태가 완전히 일치한다면 어렵지 않게 머지가 가능하겠지만, develop이 선행 개발이 더 진행된 상태라면 그때부터 꽤나 까다로워집니다**.
