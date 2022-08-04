@@ -86,6 +86,8 @@ IMFlow의 전반적인 Branch 구조는 다음과 같습니다.
 
 **임시 브랜치 → 영구 브랜치**로의 Merge는 **Squash Merge(스쿼시)**로 제약합니다.
 
+
+
 ### main
 
 **Stable 한 코드의 Archive**이며 main 브랜치로 배포하면 **언제든지 stable 한 상태의 코드가 배포**될 수 있습니다.
@@ -95,6 +97,8 @@ IMFlow의 전반적인 Branch 구조는 다음과 같습니다.
 **대부분의 업데이트(PR)는 `develop`을 통해서** 진행합니다. **단, 예외적인 상황에 대하여 `hotfix`, `release` 브랜치에 대한 PR로 업데이트**가 이루어지기도 하는데, 이는 아래에서 다룹니다.
 
 > ✅ **반드시 `develop → main`의 형태로 브랜치간의 동기화가 가능해야 한다.**
+
+
 
 ### develop
 
@@ -107,6 +111,8 @@ Deploy-ready 상태의 코드가 있는 브랜치입니다.
 기존 github는 Repo 생성시 main 브랜치가 default branch가 되지만, IMFlow에서는 **develop 브랜치를 default branch로 지정**한다.
 
 develop 브랜치에 대한 **대부분의 업데이트(PR)은 Feature branches를 통해** 진행된다. **단, 여기도 예외적인 상황에 대하여 `hotfix`, `release` 브랜치에서의 PR로 업데이트**될 수 있다.
+
+
 
 ### Feature Branches
 
@@ -146,6 +152,8 @@ Ex) feat-1, fix-3, chore-32,13, ...
 
 이때 생성되는 하위 feature 브랜치 또한 임시 브랜치이기 때문에 **Squash Commit**은 동일합니다.
 
+
+
 ### hotfix
 
 ![image](https://user-images.githubusercontent.com/29897277/182815647-245e6255-fa08-49df-b117-eb41ebc8c38d.png)
@@ -160,6 +168,8 @@ Ex) hotfix-12
 ```
 
 수정사항 반영이 완료된 경우, `main` , `develop` 브랜치에 각각 Squash Merge를 수행합니다. **가급적이면 2중 머지를 억제하고 싶지만, 이것만큼은...** 해당 과정 후 발생되는 develop 및 main 브랜치간의 불일치는 `develop -> main` Merge를 통해 재동기화해야 합니다.
+
+
 
 ### Stage Branches (release-*)
 
@@ -217,6 +227,8 @@ release-3.0.0
 
 > **✅ `main` 브랜치의 업데이트는 가능한 한 `develop` 브랜치에게 일임합니다.**
 
+
+
 ## Pull Request
 
 PR는 크게 2종류 취급한다.
@@ -225,6 +237,8 @@ PR는 크게 2종류 취급한다.
 - **코드리뷰를 위한 PR(for review)**
 
 로 나뉘어 진다.
+
+
 
 ### PR for Merge
 
@@ -268,6 +282,8 @@ Ex)
 
 브랜치 이름을 PR 제목에 넣음으로써 해당 **PR의 주요 변경점과 관련된 Issue-id를 우선적으로 확인**할 수 있습니다. 단, 해당 브랜치가 복수의 피처를 담당하게 될 경우, Label을 통하여 보다 상세한 명세를 기입합니다.
 
+
+
 ### Label for PR
 
 - **Feat** - 기능 개발, 수정 및 삭제를 했다!
@@ -279,11 +295,15 @@ Ex)
 
 이외에 **목적이** **겹치지 않는다는 가정하에 각 파트에 맞게 유동적으로 Label을 확장**시키도록 합시다!
 
+
+
 ## Issue
 
 모든 피처 브랜치 및 hotfix는 발급된 `issue-id`를 사용하여 생성합니다. 즉, **브랜치를 생성하여 태스크를 할당하기 이전에, 해당 태스크에 대한 명세가 사전에 이슈로 기입**되어 있어야 합니다.
 
 이슈 생성에 대하여 Assignees, Project와 같은 부분은 자유롭게 기입하되, Label의 경우 반드시 아래와 같은 형태로 사용하도록 해야 합니다.
+
+
 
 ### Label for Issue
 
@@ -295,6 +315,8 @@ Ex)
 - **Pause** - 이 이슈는 일시적으로 보류한다!
 
 이외에 **목적이** **겹치지 않는다는 가정하에 각 파트에 맞게 유동적으로 Label을 확장**시키도록 합니다!
+
+
 
 ## Commit
 
