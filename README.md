@@ -102,7 +102,7 @@ IMFlow의 전반적인 Branch 구조는 다음과 같습니다.
 
 ### develop
 
-![image](https://user-images.githubusercontent.com/29897277/182815055-deb23954-ae4d-4e41-9e7a-a32876e0f462.png)
+<img src="https://user-images.githubusercontent.com/29897277/182815055-deb23954-ae4d-4e41-9e7a-a32876e0f462.png" width="300">
 
 Deploy-ready 상태의 코드가 있는 브랜치입니다.
 
@@ -116,7 +116,7 @@ develop 브랜치에 대한 **대부분의 업데이트(PR)은 Feature branches�
 
 ### Feature Branches
 
-![image](https://user-images.githubusercontent.com/29897277/182815297-06ac15d9-d407-41bd-a9ca-d4b54bb9246e.png){: width="100" height="100"}
+<img src="https://user-images.githubusercontent.com/29897277/182815297-06ac15d9-d407-41bd-a9ca-d4b54bb9246e.png" width="400">
 
 피처 브랜치는 실질적인 개발 업무를 분담하기 위한 브랜치들의 집합입니다. Git-Flow는 막연히 복수의 피처 브랜치들이 develop 브랜치에 붙어 있는 형태로 주어져 있지만, 여기서 IMFlow는 각 역할에 대하여 명확하게 구분할 수 있도록 다음과 같이 브랜치 이름 규칙을 강제합니다.
 
@@ -146,7 +146,7 @@ Ex) feat-1, fix-3, chore-32,13, ...
 
 > **하나의 feature 브랜치에 여러 명이 협업한다면?**
 
-![image](https://user-images.githubusercontent.com/29897277/182815468-79d03d0f-6c7f-4380-bc45-922417ba1e98.png)
+<img src="https://user-images.githubusercontent.com/29897277/182815468-79d03d0f-6c7f-4380-bc45-922417ba1e98.png" width="400">
 
 부모의 feature 브랜치의 이름을 계승하고 추가적으로 덧붙이는 형태로 브랜치를 생성합니다.
 
@@ -156,7 +156,7 @@ Ex) feat-1, fix-3, chore-32,13, ...
 
 ### hotfix
 
-![image](https://user-images.githubusercontent.com/29897277/182815647-245e6255-fa08-49df-b117-eb41ebc8c38d.png)
+<img src="https://user-images.githubusercontent.com/29897277/182815647-245e6255-fa08-49df-b117-eb41ebc8c38d.png" width="400">
 
 hotfix 브랜치는 현재 배포되어 있는 main 브랜치에서 예상치 못한 문제가 발생한 경우, 긴급하게 수정하여 배포할 수 있도록 하는 shortcut 브랜치이다. base 브랜치는 main이며, 브랜치 이름 규칙은 아래와 같습니다.
 
