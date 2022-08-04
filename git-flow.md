@@ -26,7 +26,7 @@ Git은 기본적으로 여러 명의 사용자가 협업하기 위한 시스템�
 
 위 브랜치명들을 보시면 아시다시피, 직관적입니다. 그리고 협업을 하기에 정말 효율적인 기능들을 가지고 있군요. 이해가 안 가시면, 사진과 함께 살펴봅시다.
 
-![Untitled](https://techblog.woowahan.com/wp-content/uploads/img/2017-10-30/git-flow_overall_graph.png)
+<img src="https://techblog.woowahan.com/wp-content/uploads/img/2017-10-30/git-flow_overall_graph.png" width="600">
 
 Git-Flow를 설명할 때, 그냥 이 사진이 보통 쓰입니다. 그만큼 이해하기에 정말 적합한 사진이죠. 먼저, 위 방법론에서 `main` 과 `develop` 브랜치는 베이스로 항상 존재합니다. 정말 중요한 존재죠.
 
@@ -114,7 +114,7 @@ Git-flow에서 `develop`, ` main`(구 master) 브랜치를 제외한 모든 브�
 
 대표적으로 예를 들면 **두 브랜치가 완전히 똑같은 상태임에도 develop → main으로 직접 PR을 날리면 아무런 변화가 없어도 PR이 가능해지고 Merge가 가능하다는게 문제**입니다. 심지어 이것마저도 일반 Merge Commit이 아닌 Squash Commit을 날리면 새로운 커밋으로 취급이 되어 동기화가 안되죠.
 
-![image](https://user-images.githubusercontent.com/29897277/182574384-fe665118-f8ec-4ec7-9793-134e97a01ece.png)
+<img src="https://user-images.githubusercontent.com/29897277/182574384-fe665118-f8ec-4ec7-9793-134e97a01ece.png" width="500">
 
 **이러한 텅 빈 Merge Commit을 날려야만 비로소 develop과 main Branch의 상태가 똑같다고 인식**이 되게 됩니다.
 
@@ -130,7 +130,7 @@ Git-flow에서 `develop`, ` main`(구 master) 브랜치를 제외한 모든 브�
 
 각각에 대한 세부 설명은 [여기](https://velog.io/@viiviii/Git-pull-request-시-merge-종류)를 참고.
 
-![image](https://user-images.githubusercontent.com/29897277/182575205-07f95bb3-db87-4975-bfeb-c08a2ab39153.png)
+<img src="https://user-images.githubusercontent.com/29897277/182575205-07f95bb3-db87-4975-bfeb-c08a2ab39153.png" width="500">
 
 Git flow에서 제공하는 그림의 특징상 Rebase Merge는 아닐 것이라고 추측은 해볼 수 있겠지만, 그렇다고 Git flow에서 정확하게 무슨 형태의 머지를 하라는 건지 정의가 되어있지는 않습니다. 제가 지적하는 것은 이러한 모호함입니다.
 
@@ -145,7 +145,7 @@ Git flow에서 제공하는 그림의 특징상 Rebase Merge는 아닐 것이라
 
 > 즉, 이게 아니라 이렇게 하자는 것 입니다.
 
-![image](https://user-images.githubusercontent.com/29897277/182576344-8abc69e8-9c56-4eb6-a2d1-6d178fc7686f.png)
+<img src="https://user-images.githubusercontent.com/29897277/182576344-8abc69e8-9c56-4eb6-a2d1-6d178fc7686f.png" width="500">
 
 ## 4. 2중 Merge, 그리고 Release 브랜치
 
@@ -167,7 +167,7 @@ release 브랜치가 정말 모두에게 필요할까? 라는 의문을 지울�
 
 여기서 생기는 단점은 위에서 언급한 두 타겟 브랜치 간의 동기화가 깨진다는 점도 있지만, 가장 큰 단점으로 merge 과정이 다소 번거로워진다는 점도 존재합니다.
 
-![image](https://user-images.githubusercontent.com/29897277/182802432-65c865ac-cac2-4d50-93db-4367f66523ae.png)
+<img src="https://user-images.githubusercontent.com/29897277/182802432-65c865ac-cac2-4d50-93db-4367f66523ae.png" width="250">
 
 `release` 브랜치는 기능 개발 브랜치가 아니기에 bugfix를 비롯한 여러 잔처리 작업만을 허용하지만, 이 모든 변화 과정 또한 develop에 계속 갱신을 시켜주어야 한다는 것입니다. **1번이 아니라 계속 말이죠.**
 
