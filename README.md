@@ -43,5 +43,5 @@
 
 IMFlow 또한 Git-flow의 큰 틀을 벗어나지는 않지만, Git-flow으로 진행하면서 몇가지 문제점이 착안되었고 이를 개선하기 위해 약간 변형시킨 구조라고 보시면 됩니다. Git-flow에는 다음과 같은 문제점들이 있었습니다.
 
-[Git flow의 개념, 그리고 문제점](https://github.com/iml1111/IMFlow/blob/doc-1/git-flow.md)
+[Git flow의 개념, 그리고 문제점](https://github.com/iml1111/IMFlow/blob/develop/git-flow.md)
 
