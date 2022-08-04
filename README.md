@@ -84,7 +84,7 @@ IMFlow의 전반적인 Branch 구조는 다음과 같습니다.
 
 **영구 브랜치(develop → main)** 간의 Merge는 **Merge Pull request(일반 머지**)로 제약합니다.
 
-**임시 브랜치 → 영구 브랜치**로의 Merge는 **Squash Merge(스쿼시)**로 제약합니다.
+**임시 브랜치 → 영구 브랜치**로의 Merge는 Squash Merge(스쿼시)로 제약합니다.
 
 
 
