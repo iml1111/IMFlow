@@ -245,6 +245,77 @@ PR이 가능한 경우를 정리하자면 다음과 같습니다.
 - `hotfix → develop` (Sqaush)
 - `hotfix → main` (Sqaush)
 
-**PR의 이름**과 PR로 인해 **생성된 모든 Merge Commit의 이름**을 동일하게 맞추도록 하자.
+**PR의 이름**과 PR로 인해 **생성된 모든 Merge Commit의 이름**을 동일하게 맞추도록 합시다.
 
-PR 명을 정하는 규칙은 다음과 같다.
+PR 명을 정하는 규칙은 다음과 같습니다.
+
+```jsx
+# 제목
+[<branch-name>] PR에 대한 간략 한글설명 (#<PR-id>)
+
+# 최소 생성시 코멘트 최하단에 추가 
+- close #<issue-id>
+
+Ex)
+[feat-3] 댓글 기능 수정
+- close #3
+
+[refac-23] 메시지큐 로직 최적화
+- close #23
+```
+
+`close #<issue-id>`를 이용하여 해당 PR과 동시에 이슈를 종료할 수 있습니다. 제목, 내용 어디에도 써도 되지만 이미 브랜치 이름에서 중복되기에 내부 내용에 기입해주도록 합시다.
+
+브랜치 이름을 PR 제목에 넣음으로써 해당 **PR의 주요 변경점과 관련된 Issue-id를 우선적으로 확인**할 수 있습니다. 단, 해당 브랜치가 복수의 피처를 담당하게 될 경우, Label을 통하여 보다 상세한 명세를 기입합니다.
+
+### Label for PR
+
+- **Feat** - 기능 개발, 수정 및 삭제를 했다!
+- **BugFix** - 버그 및 기능의 문제를 해결했다!
+- **Refac** - 리팩토링을 했다!
+- **Doc** - 문서화를 했다!
+- **Chore** - 기타 잡일을 했다!
+- **Review** - 해당 PR은 리뷰를 위해 개설했다! **(PR for Review)**
+
+이외에 **목적이** **겹치지 않는다는 가정하에 각 파트에 맞게 유동적으로 Label을 확장**시키도록 합시다!
+
+## Issue
+
+모든 피처 브랜치 및 hotfix는 발급된 `issue-id`를 사용하여 생성합니다. 즉, **브랜치를 생성하여 태스크를 할당하기 이전에, 해당 태스크에 대한 명세가 사전에 이슈로 기입**되어 있어야 합니다.
+
+이슈 생성에 대하여 Assignees, Project와 같은 부분은 자유롭게 기입하되, Label의 경우 반드시 아래와 같은 형태로 사용하도록 해야 합니다.
+
+### Label for Issue
+
+- **BugFix** - 버그가 발생했다, 기능이 뭔가 이상하다!
+- **Feat** - 기능 개발, 수정 및 삭제가 필요하다!
+- **Refac** - 리팩토링이 필요해보인다!
+- **Doc** - 문서화를 해야 할 것 같다!
+- **Chore** - 그외 기타 잡일이 필요하다!
+- **Pause** - 이 이슈는 일시적으로 보류한다!
+
+이외에 **목적이** **겹치지 않는다는 가정하에 각 파트에 맞게 유동적으로 Label을 확장**시키도록 합니다!
+
+## Commit
+
+여기서의 커밋이란, PR로 생성된 모든 Merge Commit을 제외한 것을 말합니다.
+
+- 어느 정도의 작업량을 Commit 단위로 끊어야 하나
+- 얼마나 자세히 명세해야 하나
+- 커밋 이름의 규칙은 어떻게 되나
+
+는 각자가 알아서 하되, **가능하면 커밋 히스토리만으로 해당 작업의 흐름을 쉽게 파악할 수 있는 수준을 지향**하도록 합시다.
+
+
+
+## References
+
+[🐙 Github에서 협업하는 방법](https://velog.io/@cos/Github에서-협업하는-방법)
+
+[[GitHub\] GitHub로 협업하는 방법[1] - Feature Branch Workflow - Heee's Development Blog](https://gmlwjd9405.github.io/2017/10/27/how-to-collaborate-on-GitHub-1.html)
+
+[Git flow, GitHub flow, GitLab flow](https://ujuc.github.io/2015/12/16/git-flow-github-flow-gitlab-flow/)
+
+[Git 브랜칭 전략 : Git-flow와 Github-flow](https://hellowoori.tistory.com/56)
+
+[deploy 브랜치 전략 활용 방법](https://medium.com/daangn/deploy-브랜치-전략-활용-방법-545f278ca878)
