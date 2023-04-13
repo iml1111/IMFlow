@@ -280,7 +280,7 @@ PR 명을 정하는 규칙은 다음과 같습니다.
 [<branch-name>] PR에 대한 간략 한글설명 (#<PR-id>)
 
 # Github Dependabot에서 열린 PR
-[Dependabot] 자동생성 된 간략 설명
+[dependabot] 자동생성 된 간략 설명
 
 # 최소 생성시 코멘트 최하단에 추가 
 - close #<issue-id>
